@@ -1,0 +1,10 @@
+== East Coast Wings
+
+We built this application for East Coast Wings to highlight the unique flavor options of their wings. 
+
+With over 60+ flavor combinations and various heat indexes, you really get to design your own wing. 
+
+So we thought what better to talk about options than to give users the opportunity to design their own wing?
+
+Dev site can be viewed at https://goo.gl/8zxHsZ
+Email us for the username and password. 
