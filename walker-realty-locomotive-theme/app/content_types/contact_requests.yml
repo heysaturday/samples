@@ -1,0 +1,53 @@
+# Public name of this content type
+name: Contact requests
+slug: contact_requests
+description: A request that came in from the selling page from a user
+label_field_name: name
+public_submission_enabled: true
+
+public_submission_accounts: ['mlapping@gmail.com']
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- name: # Name of the field
+    label: Name
+    type: string
+    required: true
+    hint: A description of the field for the editors
+    localized: false
+
+- email: # Name of the field
+    label: Email
+    type: string
+    required: false
+    hint: A description of the field for the editors
+    localized: false
+
+- phone: # Name of the field
+    label: Phone
+    type: string
+    required: false
+    hint: A description of the field for the editors
+    localized: false
+
+- preferred_contact: # Name of the field
+    label: Preferred contact
+    type: string
+    required: true
+    hint: A description of the field for the editors
+    localized: false
+
+- comments: # Name of the field
+    label: Comments
+    type: text
+    required: false
+    hint: A description of the field for the editors
+    localized: false
+    # Enable or not the RTE [html|text]
+    # text_formatting: html
+
+- page:
+    label: Referring Page
+    type: string
+    required: false
+    hint: The page that the user submitted this form from

@@ -1,0 +1,30 @@
+# Public name of this content type
+name: Custom Listing Status
+
+# TODO: explain
+slug: listingstatuses
+
+# Explanation for the backoffice
+description: A Listing Status must be selected when creating a custom listing
+
+# Default field (e.g title)
+label_field_name: status
+
+# Order of entries
+order_direction: 'asc' 
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- status: # Name of the field
+    label: Status
+    type: string
+    required: true
+    hint: "Status for a custon listing"
+    localized: false
+
+- listings:
+    label: Linked listings
+    type: has_many
+    class_name: customlistings
+    inverse_of: listingstatuses
+    ui_enabled: true

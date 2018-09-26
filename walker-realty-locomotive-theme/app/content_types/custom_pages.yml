@@ -1,0 +1,287 @@
+# Public name of this content type
+name: Custom Pages
+
+# TODO: explain
+slug: custompages
+
+# Explanation for the backoffice
+description: "A page with a header image and 4 possible sections - 1) Headline and supporting paragraphs; 2) 4-column grid with images, section title, and paragraphs; 3) 3-column grid with the same; 4) Custom html section which can contain embedded video, etc"
+
+# Default field (e.g title)
+label_field_name: title
+
+# Order of entries
+order_by: title # default: manually, also available: created_at or any field slug
+
+# Describe each field. The name should always be an underscored string
+fields:
+- title:
+    label: The Title of this custom page
+    type: string
+    required: true
+    hint: "This title will be displayed on menus (if included), in the browser tab, and on the header image if one was given"
+
+#
+# HEADER 
+#
+
+- has_header: # Name of the field
+    label: Has A Header Image?
+    type: boolean
+    required: true
+    hint: "does this page have a header image and title"
+    localized: false
+    # Enable or not the RTE [html|text]
+
+- header_photo:
+    label: Header Image
+    type: file
+    required: false
+    hint: "select a photo to show at the top of this page"
+
+#
+# Informational Blob
+#
+- has_informational_blob: # Name of the field
+    label: Has a headline and paragraph section?
+    type: boolean
+    required: true
+    hint: "does this page have a headline and supporting paragraph?"
+    localized: false
+    # Enable or not the RTE [html|text]
+
+- informational_headline:
+    label: Informational Section - Headline
+    type: string
+    required: false
+    hint: "A headline shown in bold font"
+
+- informational_paragraph:
+    label: Informational Section - Paragraph
+    type: text
+    required: false
+    hint: "any text entered here will be centered under the headline"
+    text_formatting: html
+
+#
+# Four Column
+#
+- has_four_column: # Name of the field
+    label: Has a 4 column grid?
+    type: boolean
+    required: true
+    hint: "Does this page have a 4 coulumn grid? Each grid contians a photo, title, and descriptive paragraph"
+    localized: false
+    # Enable or not the RTE [html|text]
+
+# 4x1
+- four_col_one_image:
+    label: 4X1 Column Image
+    type: file
+    required: false
+    hint: "select a photo to show for this column"
+
+- four_col_one_headline:
+    label: 4X1 Column headline
+    type: string
+    required: false
+    hint: "A headline for this column"
+
+- four_col_one_body:
+    label: 4X1 Column body
+    type: text
+    required: false
+    hint: "any text entered here will be centered under the headline"
+    text_formatting: html
+
+- four_col_one_url:
+    label: 4X1 Column URL
+    type: string
+    required: false
+    hint: "A link for this column. the link must either be a full path to a page on this site which looks like '/page/my_custom_page' or a legitimate hyperlink like http://www.google.com/somepage"
+
+# 4x2
+- four_col_two_image:
+    label: 4x2 Column Image
+    type: file
+    required: false
+    hint: "select a photo to show for this column"
+
+- four_col_two_headline:
+    label: 4x2 Column headline
+    type: string
+    required: false
+    hint: "A headline for this column"
+
+- four_col_two_body:
+    label: 4x2 Column body
+    type: text
+    required: false
+    hint: "any text entered here will be centered under the headline"
+    text_formatting: html
+
+- four_col_two_url:
+    label: 4x2 Column URL
+    type: string
+    required: false
+    hint: "A link for this column. the link must either be a full path to a page on this site which looks like '/page/my_custom_page' or a legitimate hyperlink like http://www.google.com/somepage"
+
+# 4x3
+- four_col_three_image:
+    label: 4x3 Column Image
+    type: file
+    required: false
+    hint: "select a photo to show for this column"
+
+- four_col_three_headline:
+    label: 4x3 Column headline
+    type: string
+    required: false
+    hint: "A headline for this column"
+
+- four_col_three_body:
+    label: 4x3 Column body
+    type: text
+    required: false
+    hint: "any text entered here will be centered under the headline"
+    text_formatting: html
+
+- four_col_three_url:
+    label: 4x3 Column URL
+    type: string
+    required: false
+    hint: "A link for this column. the link must either be a full path to a page on this site which looks like '/page/my_custom_page' or a legitimate hyperlink like http://www.google.com/somepage"
+
+# 4x4
+- four_col_four_image:
+    label: 4x4 Column Image
+    type: file
+    required: false
+    hint: "select a photo to show for this column"
+
+- four_col_four_headline:
+    label: 4x4 Column headline
+    type: string
+    required: false
+    hint: "A headline for this column"
+
+- four_col_four_body:
+    label: 4x4 Column body
+    type: text
+    required: false
+    hint: "any text entered here will be centered under the headline"
+    text_formatting: html
+
+- four_col_four_url:
+    label: 4x4 Column URL
+    type: string
+    required: false
+    hint: "A link for this column. the link must either be a full path to a page on this site which looks like '/page/my_custom_page' or a legitimate hyperlink like http://www.google.com/somepage"
+
+
+#
+# Three Column
+#
+- has_three_column: # Name of the field
+    label: Has a 3 column grid?
+    type: boolean
+    required: true
+    hint: "Does this page have a 3 coulumn grid? Each grid contians a photo, title, and descriptive paragraph"
+    localized: false
+    # Enable or not the RTE [html|text]
+
+# 3x1
+- three_col_one_image:
+    label: 3x1 Column Image
+    type: file
+    required: false
+    hint: "select a photo to show for this column"
+
+- three_col_one_headline:
+    label: 3x1 Column headline
+    type: string
+    required: false
+    hint: "A headline for this column"
+
+- three_col_one_body:
+    label: 3x1 Column body
+    type: text
+    required: false
+    hint: "any text entered here will be centered under the headline"
+    text_formatting: html
+
+- three_col_one_url:
+    label: 3x1 Column URL
+    type: string
+    required: false
+    hint: "A link for this column. the link must either be a full path to a page on this site which looks like '/page/my_custom_page' or a legitimate hyperlink like http://www.google.com/somepage"
+
+# 3x2
+- three_col_two_image:
+    label: 3x2 Column Image
+    type: file
+    required: false
+    hint: "select a photo to show for this column"
+
+- three_col_two_headline:
+    label: 3x2 Column headline
+    type: string
+    required: false
+    hint: "A headline for this column"
+
+- three_col_two_body:
+    label: 3x2 Column body
+    type: text
+    required: false
+    hint: "any text entered here will be centered under the headline"
+    text_formatting: html
+
+- three_col_two_url:
+    label: 3x2 Column URL
+    type: string
+    required: false
+    hint: "A link for this column. the link must either be a full path to a page on this site which looks like '/page/my_custom_page' or a legitimate hyperlink like http://www.google.com/somepage"
+
+# 3x3
+- three_col_three_image:
+    label: 3x3 Column Image
+    type: file
+    required: false
+    hint: "select a photo to show for this column"
+
+- three_col_three_headline:
+    label: 3x3 Column headline
+    type: string
+    required: false
+    hint: "A headline for this column"
+
+- three_col_three_body:
+    label: 3x3 Column body
+    type: text
+    required: false
+    hint: "any text entered here will be centered under the headline"
+    text_formatting: html
+
+- three_col_three_url:
+    label: 3x3 Column URL
+    type: string
+    required: false
+    hint: "A link for this column. the link must either be a full path to a page on this site which looks like '/page/my_custom_page' or a legitimate hyperlink like http://www.google.com/somepage"
+
+
+#
+# Free-form HTML
+#
+- has_free_form_html: # Name of the field
+    label: Has a free-form html block?
+    type: boolean
+    required: true
+    hint: "does this page have a headline and supporting paragraph?"
+    localized: false
+    # Enable or not the RTE [html|text]
+
+- free_form_html_block:
+    label: Free Form HTML Block
+    type: text
+    required: false
+    hint: "Paste HTML in this block like videos or javascript"

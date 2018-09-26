@@ -1,0 +1,75 @@
+# Public name of this content type
+name: Blog post
+
+# TODO: explain
+slug: posts
+
+# Explanation for the backoffice
+description: A blog post
+
+# Default field (e.g title)
+label_field_name: headline
+
+# Order of entries
+order_by: date # default: manually, also available: created_at or any field slug
+
+# Order direction
+order_direction: desc # default: asc, also available: desc
+
+# Display entries grouped by <field> in the backoffice
+# group_by: <your field>
+
+# Activate public 'create' API (e.g for a contact form)
+# public_submission_enabled: false
+
+# Emails to be notified on new entries using the public API
+# public_submission_accounts: ['john@acme.net']
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- headline: # Name of the field
+    label: Headline
+    type: string
+    required: true
+    hint: "The text that will be displayed in bold at the top of the blog entry. Sometimes this will be the only text describing the entry that the user has to view, in the case of sidebars."
+    localized: false
+
+- date: # Name of the field
+    label: Date
+    type: date
+    required: true
+    hint: The date this post was created
+    localized: false
+
+- tags: # Name of the field
+    label: Tags
+    type: tags
+    required: false
+    hint: words that describe the content of the blog post
+    localized: false
+
+- teaser: # Name of the field
+    label: Teaser
+    type: text
+    required: true
+    hint: A short lead-in to the post displayed when listing posts. At most 2 paragraphs
+    localized: false
+    # Enable or not the RTE [html|text]
+
+- body: # Name of the field
+    label: Body
+    type: text
+    required: true
+    hint: The full post text and formatting
+    localized: false
+    # Enable or not the RTE [html|text]
+    text_formatting: html
+
+- author: # Name of the field
+    label: Author
+    type: belongs_to
+    required: true
+    hint: The author of this blog post
+    localized: false
+    # Slug of the target content type (eg post if this content type is a comment)
+    class_name: team_members

@@ -1,0 +1,127 @@
+---
+title: Selling
+listed: true
+published: true
+position: 2
+---
+{% extends parent %}
+
+{% block hero %}
+{% capture "hero_photo" %}{% editable_file "hero_photo" %}{% endeditable_file %}{% endcapture %}
+{% capture "hero_caption" %}
+{% editable_text "hero_caption", format: "raw" %}<span>Selling Ice To Eskimos</span>{% endeditable_text %}
+{% endcapture %}
+{% include "centered-hero" with hero_photo, hero_caption %}
+{% endblock %} 
+
+{% block main %}
+
+{% capture "header" %}
+{% editable_text "header", format: "raw" %}
+  YOUR <strong>TRUSTED SOURCE</strong> FOR FIRST-CLASS HOME SALES AND SUPERIOR CUSTOMER SERVICE
+{% endeditable_text %}
+{% endcapture %}
+
+{% capture "body" %}
+{% editable_text "body" %}
+  Looking to sell your home? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget dolor quis erat porttitor rhoncus sit amet a lacus. Pellentesque id metus bibendum, rhoncus mi nec, vulputate erat. Nam in consequat libero, vel fringilla enim. Sed cursus venenatis dolor, a convallis mi interdum eget. Proin posuere ante lacus, ac mollis tortor lobortis id. Sed a sapien et erat lobortis facilisis et sed nibh. Etiam ac erat id dolor condimentum fermentum. Quisque lobortis metus metus, sit amet pellentesque tortor venenatis et. Phasellus ornare hendrerit enim vitae adipiscing. Donec lacus dui, laoreet a viverra non, consequat eget diam
+{% endeditable_text %}
+{% endcapture %}
+
+<div class="section alt">
+	<div class="row">
+		<div class="small-10 columns small-centered end">
+			<h3 class="text-center subsection">{{ header }}</h3>
+			<div class="radius text-center text-large">{{ body }}</div>
+		</div>
+	</div>
+</div>
+
+<div class="section">
+	<div class="row text-center">
+		{% for feature in contents.what_we_do %}
+		<div class="small-6 large-3 columns">
+			<img src="{{ feature.image.url | resize: '200x200#'}}" />
+			<h4>{{ feature.activity }}</h4>
+			<div>{{ feature.body }}</div>
+		</div>
+		{% endfor %}
+	</div>
+</div>
+
+{% capture "left_caption" %}
+{% editable_text "left_caption", format: "raw", rows: 1 %}This is a content section.{% endeditable_text %}
+{% endcapture %}
+
+{% capture "left_photo" %}{% editable_file "left_photo" %}http://placehold.it/400X300&amp;text=[img]{% endeditable_file %}{% endcapture %}
+
+{% capture "left_textbody" %}
+{% editable_text "left_textbody" %}{% endeditable_text %}
+{% endcapture %}
+
+{% capture "middle_caption" %}
+{% editable_text "middle_caption", format: "raw", rows: 1 %}This is a content section.{% endeditable_text %}
+{% endcapture %}
+
+{% capture "middle_photo" %}{% editable_file "middle_photo" %}http://placehold.it/400X300&amp;text=[img]{% endeditable_file %}{% endcapture %}
+
+{% capture "middle_textbody" %}
+{% editable_text "middle_textbody" %}{% endeditable_text %}
+{% endcapture %}
+
+{% capture "right_caption" %}
+{% editable_text "right_caption", format: "raw", rows: 1 %}This is a content section.{% endeditable_text %}
+{% endcapture %}
+
+{% capture "right_photo" %}{% editable_file "right_photo" %}http://placehold.it/400X300&amp;text=[img]{% endeditable_file %}{% endcapture %}
+
+{% capture "right_textbody" %}
+{% editable_text "right_textbody" %}{% endeditable_text %}
+{% endcapture %}
+
+
+<div class="section alt">
+	<div class="row">
+		<div class="small-12 medium-6 large-4 columns">
+			<img class="box-shadow-subtle" src="{{ left_photo | resize: '400x300#' }}">
+			<h4>{{ left_caption }}</h4>
+			<div>{{ left_textbody }}</div>
+		</div>
+		<div class="small-12 medium-6 large-4 columns">
+			<img class="box-shadow-subtle" src="{{ middle_photo | resize: '400x300#' }}">
+			<h4>{{ middle_caption }}</h4>
+			<div>{{ middle_textbody }}</div>
+		</div>
+		<div class="small-12 medium-6 large-4 columns">
+			<img class="box-shadow-subtle" src="{{ right_photo | resize: '400x300#' }}">
+			<h4>{{ right_caption }}</h4>
+			<div>{{ right_textbody }}</div>
+		</div>
+	</div>
+</div>
+
+{% capture "last_section" %}
+{% editable_text "last_section" %}
+  Looking to sell your home? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget dolor quis erat porttitor rhoncus sit amet a lacus. Pellentesque id metus bibendum, rhoncus mi nec, vulputate erat. Nam in consequat libero, vel fringilla enim. Sed cursus venenatis dolor, a convallis mi interdum eget. Proin posuere ante lacus, ac mollis tortor lobortis id. Sed a sapien et erat lobortis facilisis et sed nibh. Etiam ac erat id dolor condimentum fermentum. Quisque lobortis metus metus, sit amet pellentesque tortor venenatis et. Phasellus ornare hendrerit enim vitae adipiscing. Donec lacus dui, laoreet a viverra non, consequat eget diam
+{% endeditable_text %}
+{% endcapture %}
+<div class="section">
+	<div class="row">
+		<div class="small-10 columns small-centered end">
+			<div class="radius text-center text-large">{{ last_section }}</div>
+		</div>
+	</div>
+</div>
+
+<div class="section alt">
+	<div class="row text-center">
+		<h2>CONTACT US</h2>
+	</div>
+	{% include contact-us %}
+</div>
+
+{% endblock %}
+
+{% block javascript_includes %}
+	
+{% endblock %}

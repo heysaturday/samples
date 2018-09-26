@@ -1,0 +1,44 @@
+# Public name of this content type
+name: Area sections
+
+# TODO: explain
+slug: area_sections
+
+# Explanation for the backoffice
+description: A content section containing blocks of information
+
+# Default field (e.g title)
+label_field_name: description
+
+# Order of entries
+order_by: manually # default: manually, also available: created_at or any field slug
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- description: # Name of the field
+    label: Description
+    type: string
+    required: true
+    hint: A quick description of the information contined in this section. This info is never presented to users
+    localized: false
+
+- heading: # Name of the field
+    label: Heading
+    type: string
+    required: true
+    hint: A description of the field for the editors
+    localized: false
+    # Enable or not the RTE [html|text]
+
+- area:
+    label: Area
+    type: belongs_to
+    class_name: areas
+    required: true
+
+- blocks:
+    label: Content Blocks
+    type: has_many
+    class_name: area_blocks
+    inverse_of: area_section
+    ui_enabled: true

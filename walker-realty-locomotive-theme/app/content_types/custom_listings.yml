@@ -1,0 +1,131 @@
+# Public name of this content type
+name: Custom Listings
+
+# TODO: explain
+slug: customlistings
+
+# Explanation for the backoffice
+description: Custom Listings are listings that belong to walker realty group agents which may or may not be listed on the MLS. These listings have custom urls which you can use in marketing materials
+
+# Default field (e.g title)
+label_field_name: property_nickname
+
+# Order of entries
+order_by: created_at # default: manually, also available: created_at or any field slug
+order_direction: 'desc'
+group_by: agent 
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- property_nickname:
+    label: Choose a name for the backoffice
+    type: string
+    required: true
+    hint: Choose something unique to the property. Maybe 123 Main Street or Allisons pocket listing 
+
+- agent:
+    label: Belongs To Agent
+    type: belongs_to
+    class_name: team_members
+    required: true
+
+# Listing Data    
+- street_address:
+    label: Street Address
+    type: string
+    required: false
+    hint: "" 
+    localized: false
+
+- city:
+    label: City
+    type: string
+    required: false
+    hint: "" 
+    localized: false
+
+- state:
+    label: State Name Abbreviation
+    type: string
+    required: false
+    hint: "This should nearly always be TN" 
+    localized: false
+
+- zip_code:
+    label: Zip Code
+    type: integer
+    required: false
+    hint: "" 
+    localized: false
+
+- sqft:
+    label: Total Square Feet of the Home
+    type: integer
+    required: false
+    hint: "" 
+    localized: false
+
+- price:
+    label: Price
+    type: float
+    required: false
+    hint: "The full price in dollars. 200k is 200000.00, etc"
+    localized: false
+
+- status:
+    label: Listing Status
+    type: belongs_to
+    class_name: listingstatuses
+    required: false
+
+- elementary:
+    label: Elementary School
+    type: string
+    required: false
+    hint: "" 
+    localized: false
+
+- middle:
+    label: Middle School
+    type: string
+    required: false
+    hint: "" 
+    localized: false
+
+- high:
+    label: High School
+    type: string
+    required: false
+    hint: "" 
+    localized: false
+
+- public_remarks:
+    label: Public Remarks
+    type: text
+    required: false
+    hint: "Please do not include any html or javascript in this field. Just plain text describing the home."
+    localized: false
+
+# Linked Fields
+
+- features:
+    label: Home Features
+    type: has_many
+    class_name: listingfeatures
+    inverse_of: customlisting
+    ui_enabled: true
+    required: true
+
+- photos:
+    label: Home Photos
+    type: has_many
+    class_name: listingphotos
+    inverse_of: customlisting
+    ui_enabled: true
+    required: true
+
+- virtual_tour:
+    label: Virtual Tour Code
+    type: text
+    required: false
+    hint: "Insert the html code that your virtual tour provider gives you. What you put here will be embedded as-is into the web page's html."

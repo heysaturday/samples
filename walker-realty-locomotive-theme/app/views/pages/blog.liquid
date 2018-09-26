@@ -1,0 +1,76 @@
+---
+title: Blog
+listed: true
+published: true
+position: 6
+---
+{% extends parent %}
+{% block hero %}{% endblock %}
+{% block main %}
+{% capture "page_title" %}
+{% editable_text "page_title", format: "raw", rows: 1 %}The Blog{% endeditable_text %}
+{% endcapture %}
+<div class="section">
+  <div class="row">
+    <div class="small-10 columns small-centered end">
+      <h1 class="text-center">{{ page_title }}</h1>
+    </div>
+  </div>
+</div>
+
+<div class="section"> 
+  <div class="row">&nbsp;</div>
+  <div class="row">
+    <div class="small-12 medium-8 columns">
+    {% block blog_content %}
+      {% paginate contents.posts by 5 %}
+      {% for post in paginate.collection %}
+      <div class="row">
+        <div class="small-12 columns">
+          <div class="left date" style="min-width: 150px; margin-top: 20px; margin-right: 20px; margin-bottom: 20px;">
+            <span class="day"  >{{ post.date | date: "%d" }}</span>
+            <div class="clearfix">
+              <span class="month">{{ post.date | date: "%b" }}</span>
+              <span class="year" >{{ post.date | date: "%Y" }}</span>
+            </div>
+          </div>
+          
+          <div class="">
+            <a href="/posts/{{ post._slug }}"><h3>{{ post.headline }}</h3></a>
+            {{ post.teaser }}
+            <a href="/posts/{{ post._slug }}">Read More</a>
+            <div class="metadata">
+              <span class="author"><span class="title right label radius">Author: {{ post.author.name }}</span></span>
+            </div>
+          </div>
+        </div>
+      </div>
+   
+      <hr />
+      {% endfor %}
+      {% include 'pagination' %}
+      {% endpaginate %}
+    {% endblock %}
+      <br />
+    </div>
+
+    <div class="small-12 medium-4 columns">
+      {% block posts_sidebar %}
+      <h4>Recent Blog Posts</h4>
+      <hr />
+      <div class="row" style="margin-left: 10px;">
+        <ul class="">
+          {% for post in contents.posts limit: 20 %}
+          <li class="recent-post"><a href="/posts/{{ post._slug }}">{{ post.headline }}</a></li>
+          {% endfor %}
+        </ul>
+      {% endblock %}  
+      </div>
+    </div>  
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript_includes %}
+  
+{% endblock %}

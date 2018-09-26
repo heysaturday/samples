@@ -1,0 +1,2 @@
+# How to fix the issue with Areas not linking the sections
+Navigate to the locomotive admin, edit the "Area Sections" model, toggle the "Content Blocks" has many required checkbox. Hit save.

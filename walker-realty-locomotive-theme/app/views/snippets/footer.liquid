@@ -1,0 +1,58 @@
+<footer>
+	<div class="horizontal-shadow"></div>
+	<div class="row">
+		<div class="small-4 columns">
+			<h4>Walker Realty Group</h4>
+			<p>1508 Coleman Road, Suite 101<br />
+				Knoxville, TN 37909<br />
+				(865) 240-3647<br />
+				info@wrgtn.com</p>				
+		</div>
+		<div class="small-4 columns">
+			<p>&nbsp;</p>
+		</div>
+		<div class="small-4 columns">
+			<form id="newsletter" action="{{contents.newsletter_subscriptions.public_submission_url}}" method="POST">
+				{% csrf_param %}
+				<div id="newsletter-container" class="row collapse">
+					<div class="small-12 large-8 large-offset-1 columns">
+						<div id="newsletter-form">
+							<input id="newsletter-email" name="content[email]" type="text" placeholder="Living Here Newsletter"/>
+							<div id="newsletter-error" class="hide centered">
+								<small class="error">A valid email address is required.</small>
+							</div>
+						</div>
+					</div>
+					<div class="small-9 large-3 columns small-centered large-uncentered end">
+						<div id="newsletter-button" class="">
+							<button id="dashed-button" class="small button radius success postfix">Subscribe</button>
+						</div>
+						<div id="newsletter-spin"></div>
+					</div>
+					<div id="newsletter-success" class="hide text-right">
+							<img src="{{ '/images/check.png' | theme_image_url | resize: '20x20#' }}"> Your Contact Request has been received. We will be in touch soon!
+					</div>
+				</div>
+			</form>
+			<div class="row">
+				<div class="small-12 columns">
+					<ul class="no-bullet text-right">
+						<li><a data-reveal-id="mls-disclaimer">MLS Disclaimer</a></li>
+					</ul>
+				</div>
+			</div>
+			<div class="row">
+				<div id="mls-disclaimer" class="reveal-modal small" data-reveal>
+					<img src="{{ '/images/reciprocity.gif' | theme_image_url  }}">
+					<p>© 2014 Knoxville Area Association of Realtors Multiple Listing Association. All rights reserved. The data relating to real estate for sale on this web site comes in part from the IDX program of the Multiple Listing Service of the Knoxville Area Association of Realtors&reg;. IDX information is provided exclusively for personal non-commercial use and it may not be used for any purpose other than to identify prospective properties to purchase. All information provided is deemed reliable but is not guaranteed and should be independently verified. Some properties which appear for sale on this web site may subsequently have sold or may no longer be available. Information last updated on 2014-08-06.</p>
+					<a class="close-reveal-modal">&#215;</a>
+				</div>	
+			</div>
+			<div class="row">
+				<div class="small-12 columns text-right">
+					<p>&copy; 2014 Walker Realty Group LLC</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

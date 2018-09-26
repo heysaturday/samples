@@ -1,0 +1,37 @@
+# Public name of this content type
+name: Custom Listing Feature
+
+# TODO: explain
+slug: listingfeatures
+
+# Explanation for the backoffice
+description: Listing Photos are linked to a single Custom Listing on the site
+
+# Default field (e.g title)
+label_field_name: feature
+
+# Order of entries
+order_by: sort_order # default: manually, also available: created_at or any field slug
+order_direction: 'asc'
+group_by: custom_listing 
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- feature: # Name of the field
+    label: Feature
+    type: string
+    required: true
+    hint: "Knox County, 2.5 Baths, Build in 1999, Foundation: Crawl, etc. Features will be output as an un-bulleted list."
+    localized: false
+
+- sort_order:
+    label: Sort Order
+    type: integer
+    required: true
+    hint: "1 is the first feature shown, 2 is the second, and so on. You may set every one to the same number if you don't what order they appear on the web page"
+
+- custom_listing:
+    label: Custom Listing
+    type: belongs_to
+    class_name: customlistings
+    required: false

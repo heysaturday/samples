@@ -1,0 +1,1 @@
+tinyMCE.addI18n("ja.locomotive_media",{image_desc:"\u30e1\u30c7\u30a3\u30a2\u3092\u633f\u5165"});

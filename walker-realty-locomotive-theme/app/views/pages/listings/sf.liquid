@@ -1,0 +1,106 @@
+---
+title: Single Family Home Listing
+listed: false
+published: true
+---
+{% extends index %}
+
+{% block hero %}
+{% endblock %} 
+
+{% block main %}
+{% assign home = homes | find_by_mlsid: params['id'] %}
+{% if home %}
+<div class="section">
+	<div class="row">
+		<div class="single-famly listing">
+			<div class="small-12 large-8 columns main">
+				<div class="address">
+					<span class="street">{{ home.street_address }}</span>
+          &bull;
+					<span class="location">{{ home.city }}, {{ home.state }} {{ home.zip }}</span>
+				</div>
+				<div class="">
+          <span class="sqft">{{ home.sqft }} SQ FT</span>
+				  <span class="mlsid">MLS # {{ home.mlsid }}</span>
+        </div>
+
+        <h3 class="main-title">Photos</h3>
+				<div class="photos galleria">  
+				{% for photo in home.photos %}
+					<img src="{{ photo.hi_res }}" data-title="{{ photo.file_name }}" data-description="">
+		    {% endfor %}
+				</div>
+			</div>
+			<div class="small-12 large-4 columns sidebar">
+        <a class="button small radius contact-us" href="#home-details">Contact Us</a>
+        <div class="sidebar-section">
+          <span class="price">Listing Price: {{ home.price }}</span>
+        </div>
+
+        <div class="public-remarks sidebar-section">
+          <span class="sidebar-title">Remarks</span>
+          <p class="text-justified">{{ home.public_remarks }}</p>
+        </div>
+
+        <div class="features sidebar-section">
+          <span class="sidebar-title">Property Features</span>
+          <ul class="feature-list">
+            <li class="area">{{ home.area }}</li>
+            {% if home.subdivision %}<li class="subdivision">Subdivision: {{ home.subdivision }}</li>{% endif%}
+            <li class="beds">{{ home.bedrooms_count }} Bedrooms</li>
+            <li class="baths">{{ home.baths }} Baths</li>
+            {% if home.fireplace_count > 0 %}<li class="area">{{ home.fireplace_count | ceil }} Fireplaces, Type: {{ home.fireplace_type }}</li>{% endif%}
+            <li class="parking">{{ home.parking_type }}</li>
+            <li class="year">Built in {{ home.year_built }}</li>
+            <li class="lot">Lot Size: {% if home.acres %}{{ home.acres }} Acres{% else %}{{ home.lot_size }}{% endif %}</li>
+            <li class="style">Style: {{ home.classification }}</li>
+            <li class="foundation">Foundation: {{ home.foundation }}</li>
+            <li class="heating">Heating: {{ home.heating_type }}</li>
+            <li class="cooling">Cooling: {{ home.cooling_type }}</li>
+            <li class="construction">Construction: {{ home.construction_type }}</li>
+            <li class="flooring">Flooring: {{ home.flooring }}</li>
+          </ul>
+        </div>
+
+        {% if home.elementary_school or home.middle_school or home.high_school%}
+        <div class="schools sidebar-section">
+          <span class="sidebar-title">Schools</span>
+          <ul class="schools-list">
+            <li class="elementary">Elementary: {{ home.elementary_school}}</li>
+            <li class="middle">Middle: {{ home.middle_school}}</li>
+            <li class="high">High: {{ home.high_school}}</li>
+          </ul> 
+        </div>
+        {% endif %}
+	    </div>
+	    <div class="small-12 columns">
+	    	<span class="listing-office">Listed By: {{ home.listing_office_name }}</span>
+	    </div>
+		</div>	
+	</div>
+</div>
+
+<div class="section alt">
+	<div class="row text-center">
+		<h2 class="call-to-action">Would you like to schedule a showing for this home or find out more information?</h2>
+	</div>
+	{% assign placeholder_text = "Please tell me more about mls#" | append: home.mlsid %}
+	{% include contact-us %}
+</div>
+{% else %}
+<div class="section">
+  <div class="row">
+		<p class="text-centered">Sorry, that listing does not exist or is no longer for sale.</p>
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+
+{% block javascript_includes %}
+{{ 'galleria/galleria-1.4.2.min.js' | javascript_tag }}
+<script>
+Galleria.loadTheme('{{ "galleria/themes/twelve/galleria.twelve.min.js" | javascript_url }}');
+Galleria.run('.galleria');
+</script>
+{% endblock %}

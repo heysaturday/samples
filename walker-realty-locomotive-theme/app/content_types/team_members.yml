@@ -1,0 +1,107 @@
+# Public name of this content type
+name: Team members
+
+# TODO: explain
+slug: team_members
+
+# Explanation for the backoffice
+description: A description of the content type for the editors
+
+# Default field (e.g title)
+label_field_name: name
+
+# Order of entries
+order_by: manually # default: manually, also available: created_at or any field slug
+
+# Order direction
+# order_direction: asc # default: asc, also available: desc
+
+# Display entries grouped by <field> in the backoffice
+# group_by: <your field>
+
+# Activate public 'create' API (e.g for a contact form)
+# public_submission_enabled: false
+
+# Emails to be notified on new entries using the public API
+# public_submission_accounts: ['john@acme.net']
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- name: # Name of the field
+    label: Name
+    type: string
+    required: true
+    hint: A description of the field for the editors
+    localized: false
+
+- role: # Name of the field
+    label: Role
+    type: string
+    required: true
+    hint: REALTOR®, Principal Broker, Brand manager, Admin, etc.
+    localized: false
+
+- bio: # Name of the field
+    label: Bio
+    type: text
+    required: true
+    hint: full bio
+    localized: false
+    # Enable or not the RTE [html|text]
+    text_formatting: html
+
+- phone: # Name of the field
+    label: Phone
+    type: string
+    required: true
+    hint: direct phone number
+    localized: false
+
+- email: # Name of the field
+    label: Email
+    type: string
+    required: true
+    hint: A description of the field for the editors
+    localized: false
+
+- photo: # Name of the field
+    label: Photo
+    type: file
+    required: true
+    hint: A description of the field for the editors
+    localized: false
+
+- facebook: # Name of the field
+    label: Facebook
+    type: string
+    required: false
+    hint: "link to their facebook account, http://facebook.com/username"
+    localized: false
+
+- twitter: # Name of the field
+    label: Twitter
+    type: string
+    required: false
+    hint: "link to twitter account: http://twitter.com/realtoroftheyear"
+    localized: false
+
+- website: # Name of the field
+    label: Website
+    type: string
+    required: false
+    hint: "link to their website, if they have one"
+    localized: false
+
+- google_plus: # Name of the field
+    label: Google plus
+    type: string
+    required: false
+    hint: Google plus if it exists
+    localized: false
+
+- custom_listings:
+    label: Custom Listings
+    type: has_many
+    class_name: customlistings
+    inverse_of: team_member
+    ui_enabled: true

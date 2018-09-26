@@ -1,0 +1,1 @@
+tinyMCE.addI18n("fr.locomotive_media",{image_desc:"Ins\xe9rer m\xe9dia"});

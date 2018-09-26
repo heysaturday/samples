@@ -1,0 +1,1 @@
+tinyMCE.addI18n("pl.locomotive_media",{image_desc:"W\u0142\xf3\u017c no\u015bnik"});

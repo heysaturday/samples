@@ -1,0 +1,85 @@
+syntax = "proto3";
+package phone;
+
+import "google/protobuf/timestamp.proto";
+
+// The Phone service definition.
+service phone {   
+  rpc GetHotelDids(Empty) returns (DidResponse) {}
+  rpc InitiateBridgedCall(BridgedCallRequest) returns (CallResponse) {}
+  rpc GetCallHistory(DateRangeFilter) returns (CallHistoryResponse) {}
+  rpc UpdateInProgressCalls(Empty) returns (Empty) {}
+  rpc UpdateIncomingCalls(Empty) returns (Empty) {}
+}
+
+message BridgedCallRequest {
+  int32 salesAgentId = 1;
+  string salesAgentPhone = 2;
+  string customerPhone = 3;
+  string customerName = 4;
+  int32 hotelId = 5;
+  string hotelPhone = 6;
+  bool isTestCall = 7;
+}
+
+message CallResponse {
+  bool success = 1;
+  string message = 2;
+  int32 id = 3;
+}
+
+message HotelDid {
+  string did = 1;         // Phone Number
+  string franchise = 2;   // Comfort Inn, etc
+  string city = 3;        // Jackson
+  string state = 4;       // MS
+  int32 id = 5;
+  int32 hotelId = 6;
+  int32 salesAgentId = 7;
+}
+
+message DidResponse {
+  bool success = 1;
+  string message = 2;
+  repeated HotelDid dids = 3;
+}
+
+message Contact {
+  int32 id = 1;
+  string name = 2;
+  string phone = 3;
+}
+
+message CallDetailRecord {
+  Contact salesAgent = 1;
+  Contact customer = 2;
+  Contact hotel = 3;
+  bool callSucceeded = 4;
+  bool callAnswered = 5;
+  int32 callTimeInSeconds = 6;
+  google.protobuf.Timestamp timestamp = 7;
+
+  enum Direction {
+    INBOUND = 0;
+    OUTBOUND = 1;
+  }
+  Direction direction = 8;
+  int32 id = 9;
+  string legAId = 10;
+  string legBId = 11;
+  bool hasVoicemail = 12;
+  string voicemailUrl = 13;
+}
+
+message CallHistoryResponse {
+  bool success = 1;
+  string message = 2;
+  repeated CallDetailRecord records = 3;
+}
+
+message DateRangeFilter {
+  google.protobuf.Timestamp start = 1;
+  google.protobuf.Timestamp end = 2;
+}
+
+message Empty {}

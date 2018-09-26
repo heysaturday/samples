@@ -1,0 +1,45 @@
+# Public name of this content type
+name: What we do
+
+# TODO: explain
+slug: what_we_do
+
+# Explanation for the backoffice
+description: These content types are for each of the selling features listed on the selling page
+
+# Default field (e.g title)
+label_field_name: title
+
+# Order of entries
+order_by: manually # default: manually, also available: created_at or any field slug
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- title: # Name of the field
+    label: Title
+    type: string
+    required: true
+    hint: Just describes this things that sets WRG apart from the rest
+    localized: false
+
+- activity: # Name of the field
+    label: Activity
+    type: string
+    required: true
+    hint: Text that describes the action, should be short
+    localized: false
+
+- body: # Name of the field
+    label: Body
+    type: text
+    required: true
+    hint: Elaborate on the activity and how it sets WRG apart
+    localized: false
+    text_formatting: html
+
+- image: # Name of the field
+    label: Image
+    type: file
+    required: true
+    hint: An image
+    localized: false

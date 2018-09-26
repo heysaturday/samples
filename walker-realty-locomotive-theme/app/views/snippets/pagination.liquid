@@ -1,0 +1,17 @@
+{% if paginate.total_pages > 1 %}
+<div class="row">
+	<div class="pagination-centered">
+		<ul class="pagination">
+			<li class="arrow {% unless paginate.previous_page %}unavailable{% endunless %}"><a href="{{ paginate.previous.url }}">&laquo;</a></li>
+			
+		{% for page in paginate.parts %}
+			<li {% unless page.is_link %}class="{% if page.title == '&hellip;' %}unavailable"{% else %}current{% endif %}"{% endunless %}>
+				<a href="{% if page.is_link %}{{ page.url }}{% endif %}">{{ page.title }}</a>
+			</li>
+		{% endfor %}
+
+			<li class="arrow {% unless paginate.next_page %}unavailable{% endunless %}"><a href="{{ paginate.next.url }}">&raquo;</a></li>
+		</ul>
+	</div>
+</div>
+{% endif %}

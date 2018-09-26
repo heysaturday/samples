@@ -1,0 +1,34 @@
+development:
+  sessions:
+    default:
+      database: locomotive_dev
+      hosts:
+        - localhost:27017
+  options:
+    identity_map_enabled: true
+
+test:
+  sessions:
+    default:
+      database: locomotive_test
+      hosts:
+        - localhost:27017
+  options:
+    identity_map_enabled: true
+
+production:
+  sessions:
+    default:
+      database: locomotive_production
+      # heroku
+      # uri: <%= ENV['MONGOHQ_URL'] %>
+      hosts:
+        - localhost:27017
+    mls:
+      database: rets
+      username: retsuser
+      password: wrgtnrets
+      hosts:
+        - 104.236.58.229:27000
+  options:
+    identity_map_enabled: true

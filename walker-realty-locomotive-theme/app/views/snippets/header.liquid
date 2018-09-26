@@ -1,0 +1,31 @@
+<div class="fixed">
+	<nav id="wrg-navbar" class="top-bar" data-topbar>
+		<ul class="title-area">
+			<li class="name">
+				<h1>
+					<a id="logo" href="/"></a>
+				</h1>
+			</li>
+			<!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+			<li class="toggle-topbar menu-icon">
+				<a href="#"><span>Menu</span></a>
+			</li>
+		</ul>
+		<section class="top-bar-section">
+			<!-- Social Media Icons -->
+			<ul class="right show-for-large-up">
+				{% for slink in contents.social_links %}
+				<li class="social">
+					<a id="override" target="_blank" href="{{ slink.url }}"><span class="fa {{ slink.fontawesome_class }}"></span></a>
+				</li>
+				{% endfor %}
+			</ul>
+
+			<!-- Menu Bar Items -->
+			<ul id="override" class="left">
+				{% nav 'site', no_wrapper: true, active_class: "active" %}
+			</ul>
+		</section>
+	</nav>
+	{{ social_links.count }}
+</div>

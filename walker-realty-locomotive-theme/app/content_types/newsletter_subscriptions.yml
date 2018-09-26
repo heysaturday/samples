@@ -1,0 +1,17 @@
+# Public name of this content type
+name: Newsletter Subscriptions
+slug: newsletter_subscriptions
+description: A subscription to the knox living newsletter
+label_field_name: email
+public_submission_enabled: true
+
+public_submission_accounts: ['mlapping@gmail.com']
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- email: # Name of the field
+    label: Email
+    type: string
+    required: true
+    hint: A description of the field for the editors
+    localized: false

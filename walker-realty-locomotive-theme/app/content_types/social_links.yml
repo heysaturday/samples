@@ -1,0 +1,37 @@
+# Public name of this content type
+name: Social Links
+
+# TODO: explain
+slug: social_links
+
+# Explanation for the backoffice
+description: Links to social media
+
+# Default field (e.g title)
+label_field_name: name
+
+# Order of entries
+order_by: manually # default: manually, also available: created_at or any field slug
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- name: # Name of the field
+    label: Name
+    type: string
+    required: true
+    hint: name of the social media service
+    localized: false
+
+- url: # Name of the field
+    label: Url
+    type: string
+    required: true
+    hint: full url like http://facebook.com/wrgtn - make sure the http:// part is present in the link
+    localized: false
+
+- fontawesome_class: # Name of the field
+    label: Fontawesome class
+    type: string
+    required: true
+    hint: "The fontawesome css class to display the icon. Found at http://fortawesome.github.io/Font-Awesome/cheatsheet/ , examples are fa-linkedin or fa-facebook"
+    localized: false

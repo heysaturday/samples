@@ -1,0 +1,223 @@
+---
+title: Home
+published: true
+---
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="keywords" content="{{ site.meta_keywords }} {{ page.meta_keywords }}">
+    {% if page.meta_description %}
+      <meta name="description" content="{{ page.meta_description }}">
+    {% else %}
+      <meta name="description" content="{{ site.meta_description }}">
+    {% endif %}
+    <link rel="shortcut icon" href="{{ 'favicon.ico' | theme_image_url }}" type="image/x-icon">
+    <link rel="icon" href="{{ 'favicon.ico' | theme_image_url}}" type="image/x-icon">
+    <title>
+      {% block title %}
+      {{ page.title }} - {{ site.name }} | {% if page.seo_title %}{{ page.seo_title }}{% else %}{{ site.seo_title }}{% endif %}
+      {% endblock %}
+    </title>
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Montserrat:400'>
+    <link rel='stylesheet' type='text/css' href='http://fonts.googleapis.com/css?family=Open+Sans'>
+    <link rel='stylesheet' type='text/css' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css'>
+    {{ 'foundation.css'    | stylesheet_tag }}
+    {{ 'select2.css'       | stylesheet_tag }}
+    {{ 'site.css'          | stylesheet_tag }}
+    {{ 'modernizr.js'      | javascript_tag }}
+    {{ 'jquery.min.js'     | javascript_tag }}
+    {{ 'select2.min.js'    | javascript_tag }}
+    {{ 'foundation.min.js' | javascript_tag }}
+    {{ 'spin.min.js'       | javascript_tag }}
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.6.2/html5shiv.js"></script><![endif]-->
+    <!--[if (gte IE 6)&(lte IE 8)]>
+      <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/selectivizr/1.0.2/selectivizr-min.js"></script>
+    <![endif]-->
+  </head>
+  <body class="{{ page.slug }}">
+    <!-- Global Page Header -->
+    {% include header %}
+    {% block hero %}
+    {% capture "hero_caption" %}
+    {% editable_text "hero_caption", format: "raw", rows: 1 %}Find Your New Home{% endeditable_text %}
+    {% endcapture %}
+    <div class="block-home-page-hero" >
+      <div class="hero">
+        <div class="row">
+          <div id="mls-search" class="large-8 small-centered columns end">
+            <form method="GET" action="/search/r">
+              <div class="row panel radius">
+                <div class="row hide-for-small-only">
+                  <h1>{{ hero_caption | escape }}</h1>
+                </div>
+                
+                <div class="small-12 large-5 columns">
+                  {% include mls-areabar %}
+                </div>
+                
+                <div class="small-12 medium-3 large-3 columns">
+                    {% include mls-bedrooms %}                  
+                </div>
+                
+                <div class="small-12 medium-6 large-2 columns text-center">
+                    <a href="#" data-dropdown="mls-price"><span>Price</span></a>
+                </div>
+                {% include mls-pricedropdown %}
+		        
+                <div class="small-12 medium-3 large-2 columns text-center">
+                  <a href="#" data-dropdown="mls-more" class="" ><span>More</span></a>
+                  <!-- <a href="#" data-dropdown="mls-more" data-options="align:left" aria-controls="mls-more" aria-expanded="false">More</a> -->
+                </div>
+                {% include mls-moredropdown %}    
+              </div>
+              <div class="row">
+                <div class="small-12 columns small-centered">
+                  <button class="small button radius success">SEARCH FOR YOUR NEW HOME&nbsp;
+                    <i class="fi-magnifying-glass"></i>
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+    {% block main %}
+    {% capture "slogan" %}
+    {% editable_text "slogan", format: "raw", rows: 1 %}Walker Realty Group Offers a Fresh Approach{% endeditable_text %}
+    {% endcapture %}
+    {% capture "misson_statement" %}
+    {% editable_text "mission_statement" %}
+       Whether you're interested in selling, buying a starter home, dream home, or rental property, you've discovered the right full-service real estate brokerage, especially if you're looking for personalized, and catered services. We offer a refreshing approach for all your real estate needs.
+    {% endeditable_text %}
+    {% endcapture %}
+    {% capture "left_caption" %}
+    {% editable_text "left_caption", format: "raw", rows: 1 %}Our Town{% endeditable_text %}
+    {% endcapture %}
+    {% capture "left_photo" %}{% editable_file "left_photo" %}/images/home/kitchen.jpg{% endeditable_file %}{% endcapture %}
+    {% capture "left_link" %}{% editable_text "left_link", format: raw, hint: "Either a page on this site, like /posts/an-example or a full url, such as http://www.linkedin.com", rows: 1 %}{% endeditable_text %}{% endcapture %}
+    
+    {% capture "left_textbody" %}
+    {% editable_text "left_textbody" %}{% endeditable_text %}
+    {% endcapture %}
+    {% capture "middle_caption" %}
+    {% editable_text "middle_caption", format: "raw", rows: 1 %}How's The Market?{% endeditable_text %}
+    {% endcapture %}
+    {% capture "middle_photo" %}{% editable_file "middle_photo" %}/images/home/curbside.jpg{% endeditable_file %}{% endcapture %}
+    {% capture "middle_link" %}{% editable_text "middle_link", format: raw, hint: "Either a page on this site, like /posts/an-example or a full url, such as http://www.linkedin.com", rows: 1 %}{% endeditable_text %}{% endcapture %}
+    {% capture "middle_textbody" %}
+    {% editable_text "middle_textbody" %}{% endeditable_text %}
+    {% endcapture %}
+    {% capture "right_caption" %}
+    {% editable_text "right_caption", format: "raw", rows: 1 %}Meet The Team{% endeditable_text %}
+    {% endcapture %}
+    {% capture "right_photo" %}{% editable_file "right_photo" %}/images/home/team.jpg{% endeditable_file %}{% endcapture %}
+    {% capture "right_link" %}{% editable_text "right_link", format: raw, hint: "Either a page on this site, like /posts/an-example or a full url, such as http://www.linkedin.com", rows: 1 %}{% endeditable_text %}{% endcapture %}
+    {% capture "right_textbody" %}
+    {% editable_text "right_textbody" %}{% endeditable_text %}
+    {% endcapture %}
+    <div class="section">
+      <div class="row">
+        <div class="small-10 columns small-centered end">
+          <h1 class="text-center">{{ slogan }}</h1>
+          <p class="radius text-center text-large">{{ misson_statement }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="section text-justify alt">
+      <div class="row">
+        <div class="small-12 medium-6 large-4 columns">
+          <a href="{{ left_link | default: '#' }}"><img class="th box-shadow-subtle"  src="{{ left_photo | resize: '388x260#' }}"></a>
+          <a href="{{ left_link | default: '#' }}"><h4 class="text-center">{{ left_caption | escape }}</h4></a>
+          {% if left_textbody %}
+          <p>{{ left_textbody }}</p>
+          {% endif %}
+        </div>
+        <div class="small-12 medium-6 large-4 columns">
+          <a href="{{ middle_link | default: '#' }}"><img class="th box-shadow-subtle"  src="{{ middle_photo | resize: '388x260#' }}"></a>
+          <a href="{{ middle_link | default: '#' }}"><h4 class="text-center">{{ middle_caption | escape }}</h4></a>
+          {% if middle_textbody %}
+          <p>{{ middle_textbody }}</p>
+          {% endif %}
+        </div>
+        <div class="small-12 medium-6 large-4 columns medium-centered large-uncentered end">
+          <a href="{{ right_link | default: '#' }}"><img class="th box-shadow-subtle"  src="{{ right_photo | resize: '388x260#' }}"></a>
+          <a href="{{ right_link | default: '#' }}"><h4 class="text-center">{{ right_caption | escape }}</h4></a>
+          {% if right_textbody %}
+          <p>{{ right_textbody }}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% block expert_pics %}
+    {% capture "title" %}
+    {% editable_text "title", format: "raw", rows: 1 %}Hand picked homes from your favorite agents{% endeditable_text %}
+    {% endcapture %}
+   
+    {% capture "left_caption" %}
+    {% editable_text "left_caption", format: "raw", rows: 1 %}Our Town{% endeditable_text %}
+    {% endcapture %}
+    {% capture "left_photo" %}{% editable_file "left_photo" %}/images/home/kitchen.jpg{% endeditable_file %}{% endcapture %}
+    {% capture "left_textbody" %}
+    {% editable_text "left_textbody" %}{% endeditable_text %}
+    {% endcapture %}
+    {% capture "left_agent" %}
+    {% editable_text "left_agent", format: raw %}{% endeditable_text %}
+    {% endcapture %}
+    {% capture "left_link" %}
+    {% editable_text "left_link", format: raw %}{% endeditable_text %}
+    {% endcapture %}
+
+    {% capture "right_caption" %}
+    {% editable_text "right_caption", format: "raw", rows: 1 %}Meet The Team{% endeditable_text %}
+    {% endcapture %}
+    {% capture "right_photo" %}{% editable_file "right_photo" %}/images/home/team.jpg{% endeditable_file %}{% endcapture %}
+    {% capture "right_textbody" %}
+    {% editable_text "right_textbody" %}{% endeditable_text %}
+    {% endcapture %}
+    {% capture "right_agent" %}
+    {% editable_text "right_agent", format: raw %}{% endeditable_text %}
+    {% endcapture %}
+    {% capture "right_link" %}
+    {% editable_text "right_link", format: raw %}{% endeditable_text %}
+    {% endcapture %}
+    <div class="section">
+      <div class="row text-center"><h2>{{ title }}</h2></div>
+      </div>
+      <div class="row">
+        <div class="small-12 medium-6 columns">
+          <a href="{{ left_link | default: '#' }}"><img class="th box-shadow-subtle" src="{{ left_photo | resize: '600x300#' }}"></a>
+          <div class="clearfix">
+            <a href="{{ left_link | default: '#' }}"><h4 class="left">{{ left_caption | escape }}</h4></a>
+            <span class="title right label radius">{{ left_agent }}</span>
+          </div>
+          <div>
+            {{ left_textbody }}
+          </div>
+        </div>
+        <div class="small-12 medium-6 columns">
+          <a href="{{ right_link | default: '#' }}"><img class="th box-shadow-subtle" src="{{ right_photo | resize: '600x300#' }}"></a>
+          <div class="clearfix">
+            <a href="{{ right_link | default: '#' }}"><h4 class="left">{{ right_caption | escape }}</h4></a>
+            <span class="title right label radius">{{ right_agent }}</span>
+          </div>
+          <div>
+            {{ right_textbody }}
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endblock %}
+    
+    {% endblock %}
+    {% include footer %}
+    {{ 'app.js' | javascript_tag }}
+{% block javascript_includes %}
+    {{ 'mls.js' | javascript_tag }}
+{% endblock %}
+  </body>
+</html>

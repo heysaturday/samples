@@ -1,0 +1,69 @@
+# Public name of this content type
+name: Areas
+
+# TODO: explain
+slug: areas
+
+# Explanation for the backoffice
+description: These areas are displayed on the Our Town page
+
+# Default field (e.g title)
+label_field_name: name
+
+# Order of entries
+order_by: name # default: manually, also available: created_at or any field slug
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- name: # Name of the field
+    label: Name
+    type: string
+    required: true
+    hint: Name of the area i.e. Knox county or Turkey Creek
+    localized: false
+
+- main_photo: # Name of the field
+    label: Main photo
+    type: file
+    required: true
+    hint: This is the photo displayed on the Our Town page
+    localized: false
+
+- hero_photo:
+    label: Fullwidth Photo in Header
+    type: file
+    required: true
+    hint: This is the photo displayed at the top of the area page
+    localized: false
+
+- hero_caption: # Name of the field
+    label: Hero caption
+    type: string
+    required: true
+    hint: Caption text on top of the Fullwidth photo
+    localized: false
+
+- description: # Name of the field
+    label: Description
+    type: text
+    required: true
+    hint: A description of the area
+    localized: false
+    # Enable or not the RTE [html|text]
+    text_formatting: html
+
+- zip_codes: # Name of the field
+    label: Zip codes
+    type: string
+    required: false
+    hint: IF you want to display mls statistics on the area page then you must enter zip codes separated by spaces or commas
+    localized: false
+
+- content_sections:
+    label: Content Sections
+    type: has_many
+    class_name: area_sections
+    inverse_of: area
+    ui_enabled: true
+    required: true
+

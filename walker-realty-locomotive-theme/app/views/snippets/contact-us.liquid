@@ -1,0 +1,139 @@
+<a name="home-details"></a>
+<div id="contactus-container">
+	<form id="contactus" method="POST" action="{{contents.contact_requests.public_submission_url}}">
+		{% csrf_param %}
+		<input type="hidden" name="content[page]" value="{{ url }}" />
+		<div  class="row">
+			<div class="small-12 medium-3 columns">
+				<label>
+					Name
+					<input id="contactus-name" type="text" name="content[name]" placeholder="" />
+				</label>
+				<div id="contactus-name-error" class="hide">
+					<small class="error">A full name is required.</small>
+				</div>
+			</div>
+			<div class="small-12 medium-3 columns">
+				<label>
+					Email
+					<input id="contactus-email" type="text" name="content[email]" placeholder="" />
+				</label>
+				<div id="contactus-email-error" class="hide">
+					<small class="error">A valid email address is required.</small>
+				</div>
+			</div>
+			<div class="small-12 medium-3 columns">
+				<label>
+					Phone
+					<input id="contactus-phone" type="text" name="content[phone]" placeholder="" />
+				</label>
+				<div id="contactus-phone-error" class="hide">
+					<small class="error">A valid phone number is required.</small>
+				</div>
+			</div>
+			<div class="small-12 medium-3 columns">
+				<label>Preferred Contact
+					<select id="contactus-preferred-method" name="content[preferred_contact]" >
+						<option value="email">email</option>
+						<option value="phone">phone</option>
+					</select>
+				</label>
+			</div>
+		</div>
+		<div class="row">
+			<div class="small-12 medium-10 columns">
+				<label>Comments
+					<textarea name="content[comments]" placeholder="{{ placeholder_text }}"></textarea>	
+				</label>
+			</div>
+			<div class="small-6 medium-2 small-centered medium-uncentered columns end text-right">
+				<input type="submit" id="selling-form-submit-button" class="success radius button">
+			</div>
+		</div>
+	</form>
+</div>
+
+<div id="contactus-spin" class="hide text-center">
+</div>
+
+<div id="contactus-success" class="hide text-center">
+	<img src="{{ '/images/check.png' | theme_image_url | resize: '20x20#' }}"> Your Contact Request has been received. We will be in touch soon!
+</div>
+
+<script>
+$(function () {
+	function resetContactusForm() {
+		$("#contactus-name-error").addClass("hide");
+		$("#contactus-email-error").addClass("hide");
+		$("#contactus-phone-error").addClass("hide");
+
+        $("#selling-form-submit-button").removeClass("hide");
+        $("#contactus-spin").addClass("hide");
+	}
+
+	function contactusPhoneInvalid() {
+		$("#contactus-phone-error").removeClass("hide");
+	}
+
+	function contactusEmailInvalid() {
+		$("#contactus-email-error").removeClass("hide");
+	}
+
+	function contactusNameInvalid() {
+		$("#contactus-name-error").removeClass("hide");	
+	}
+
+	function contactusSuccess() {
+		$("#contactus-container").addClass("hide");
+		$("#contactus-success").removeClass("hide");
+	}
+
+	$(document).on('submit', 'form#contactus', function() {
+        resetContactusForm();
+        
+        if ($("#contactus-name").val() == "") {
+            contactusNameInvalid();
+            return false;
+        }
+
+        switch($("#contactus-preferred-method").val()) {
+        	case "email":
+        		if (!isEmail($("#contactus-email").val())) {
+        			contactusEmailInvalid();
+        			return false;
+        		}
+        		break;
+
+        	case "phone":
+        		if (!isPhone($("#contactus-phone").val())) {
+        			contactusPhoneInvalid();
+        			return false;
+        		}
+        		break;
+
+        	default:
+        		// TODO, handle when the select box has not been populated
+        		return false;
+        }
+        
+        var spinner = new Spinner().spin(document.getElementById('selling-form-submit-button'));
+
+        $.ajax({
+            url     : $(this).attr('action') + ".json",
+            type    : $(this).attr('method'),
+            data    : $(this).serialize(),
+            dataType: 'json',
+            success : function( data ) {
+                spinner.stop();
+                contactusSuccess();
+                
+            },
+            error   : function( xhr, err, strError ) {
+                spinner.stop();
+                invalidEmail();
+            }
+        }); 
+        return false;
+    });
+})
+</script>

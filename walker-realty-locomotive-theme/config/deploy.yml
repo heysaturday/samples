@@ -1,0 +1,14 @@
+development:
+  host: wrgtn.locomotivehosting.com
+  api_key: 1e5ca0a467afac34bcbed7e27145b448eaaba0f7
+  ssl: true
+
+staging:
+  host: staging.example.com
+  email: john@doe.net
+  password: apassword
+  # api_key: <your api key here>
+production:
+  host: localhost
+  email: mlapping@gmail.com
+  api_key: 2772c6a72f098a8026c57b0d9fdf5fe2f9ba38aa

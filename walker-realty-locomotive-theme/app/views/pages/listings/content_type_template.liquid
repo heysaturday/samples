@@ -1,0 +1,105 @@
+---
+title: Walker Realty Group Listing
+content_type: customlistings
+---
+{% extends index %}
+
+{% block hero %}
+{% endblock %} 
+
+{% block main %}
+<div class="section">
+	<div class="row">
+		<div class="single-famly listing">
+			<div class="small-12 large-8 columns main">
+				<div class="address">
+					<span class="street">{{ customlisting.street_address }}</span>
+					&bull;
+					<span class="location">{{ customlisting.city }}, {{ customlisting.state }} {{ customlisting.zip_code }}</span>
+				</div>
+				<div class="">
+					<span class="sqft">{{ customlisting.sqft }} SQ FT</span>
+					<span class="mlsid">Status: {{ customlisting.status.status }}</span>
+				</div>
+
+				<h3 class="main-title">Photos</h3>
+				<hr>
+				<div class="photos galleria">
+					{% assign photos = customlisting.photos | sort: "sort_order" %}
+					{% for photo in customlisting.photos %}
+					<img src="{{ photo.photo.url }}" data-title="{{ photo.description }}" data-description="">
+					{% endfor %}
+				</div>
+
+				{% if customlisting.virtual_tour %}
+				<h3 class="main-title">Virtual Tour</h3>
+				<hr>
+				<div class="virtualtour text-center">
+					{{ customlisting.virtual_tour }}
+				</div>
+				{% endif %}
+			</div>
+			<div class="small-12 large-4 columns sidebar">
+				<a class="button small radius contact-us" href="#customlisting-details">Contact Us</a>
+				<div class="sidebar-section">
+					<span class="price">Listing Price: {{ customlisting.price | money_without_currency }}</span>
+				</div>
+
+				<div class="public-remarks sidebar-section">
+					<span class="sidebar-title">Remarks</span>
+					<p class="text-justified">{{ customlisting.public_remarks }}</p>
+				</div>
+
+				<div class="features sidebar-section">
+					<span class="sidebar-title">Property Features</span>
+					<ul class="feature-list">
+						{% assign features = customlisting.features | sort: "sort_order" %}
+						{% for feature in customlisting.features %}
+						<li class="feature">{{ feature.feature }}</li>
+						{% endfor %}
+					</ul>
+				</div>
+
+				{% if customlisting.elementary  != '' or customlisting.middle != '' or customlisting.high != '' %}
+				<div class="schools sidebar-section">
+					<span class="sidebar-title">Schools</span>
+					<ul class="schools-list">
+						<li class="elementary">Elementary: {{ customlisting.elementary}}</li>
+						<li class="middle">Middle: {{ customlisting.middle}}</li>
+						<li class="high">High: {{ customlisting.high}}</li>
+					</ul> 
+				</div>
+				{% endif %}
+			</div>
+			<div class="small-12 columns">
+				<a name="customlisting-details"></a>
+				<br>
+				<h2 class="text-center">This Walker Realty Group listing is brought to you by</h2>
+				<hr>
+				<div class="row">
+					<div class="small-12 medium-3 columns">
+						<div class="photo"><img src="{{ customlisting.agent.photo.url | resize: '400x300#' }}" alt="{{ customlisting.agent.name }}" /></div>
+						<div class="agent-info" style="max-width: 400px">
+							<span class="name left">{{ customlisting.agent.name }}</span>
+							<span class="title right label radius">{{ customlisting.agent.role }}</span>
+						</div>
+					</div>
+					<div class="small-12 medium-9 columns text-center">
+						<h4 style="margin-top: 0px;" class="call-to-action">Schedule a showing for this home or find out more information</h4>
+						{% assign placeholder_text = "Please tell me more about " | append: customlisting.street_address %}
+						{% include contact-us %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block javascript_includes %}
+{{ 'galleria/galleria-1.4.2.min.js' | javascript_tag }}
+<script>
+Galleria.loadTheme('{{ "galleria/themes/twelve/galleria.twelve.min.js" | javascript_url }}');
+Galleria.run('.galleria');
+</script>
+{% endblock %}

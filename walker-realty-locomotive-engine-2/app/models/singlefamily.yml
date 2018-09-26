@@ -1,0 +1,258 @@
+GF20130414180414187457000000:
+  :attr_name: parking_type
+  :class: String
+GF20130414180414191255000000:
+  :attr_name: fireplace_type
+  :class: String
+GF20130414180414194079000000:
+  :attr_name: architecture_style
+  :class: String
+GF20130414180414199286000000:
+  :attr_name: construction_type
+  :class: String
+GF20130414180414210618000000:
+  :attr_name: cooling_type
+  :class: String
+GF20130414180414213579000000:
+  :attr_name: heating_type
+  :class: String
+GF20130414180414237825000000:
+  :attr_name: flooring
+  :class: String
+GF20130414180414262076000000:
+  :attr_name: foundation
+  :class: String
+LIST_104:
+  :attr_name: display
+  :class: String
+LIST_105:
+  :attr_name: mls_id_alt
+  :class: Integer
+LIST_106:
+  :attr_name: list_agency_office_id
+  :class: String
+LIST_108:
+  :attr_name: distressed_status
+  :class: String
+LIST_10:
+  :attr_name: listing_date
+  :class: DateTime
+LIST_111:
+  :attr_name: has_a_basement
+  :class: String
+LIST_113:
+  :attr_name: sub_area
+  :class: String
+LIST_117:
+  :attr_name: fireplace_count
+  :class: Float
+LIST_118:
+  :attr_name: hoa_fee
+  :class: Float
+LIST_119:
+  :attr_name: city_taxes
+  :class: Float
+LIST_11:
+  :attr_name: expiration_date
+  :class: DateTime
+LIST_124:
+  :attr_name: county_taxes
+  :class: Float
+LIST_12:
+  :attr_name: sold_date
+  :class: DateTime
+LIST_132:
+  :attr_name: entry_date
+  :class: DateTime
+LIST_133:
+  :attr_name: pics_count
+  :class: Integer
+LIST_134:
+  :attr_name: pics_timestamp
+  :class: DateTime
+LIST_135:
+  :attr_name: days_on_market
+  :class: String
+LIST_13:
+  :attr_name: contract_date
+  :class: DateTime
+LIST_141:
+  :attr_name: public_remarks
+  :class: String
+LIST_144:
+  :attr_name: elementary_school
+  :class: String
+LIST_145:
+  :attr_name: middle_school
+  :class: String
+LIST_146:
+  :attr_name: high_school
+  :class: String
+LIST_147:
+  :attr_name: classification
+  :class: String
+LIST_14:
+  :attr_name: fallthrough_date
+  :class: DateTime
+LIST_15:
+  :attr_name: status
+  :class: String
+LIST_161:
+  :attr_name: docs_timestamp
+  :class: DateTime
+LIST_162:
+  :attr_name: docs_count
+  :class: Integer
+LIST_16:
+  :attr_name: status_change_date
+  :class: DateTime
+LIST_17:
+  :attr_name: temp_off_market_date
+  :class: DateTime
+LIST_18:
+  :attr_name: cancel_date
+  :class: DateTime
+LIST_19:
+  :attr_name: pending_status
+  :class: String
+LIST_1:
+  :attr_name: internal_listing_id
+  :class: String
+LIST_21:
+  :attr_name: orig_price
+  :class: Float
+LIST_22:
+  :attr_name: price
+  :class: Float
+LIST_23:
+  :attr_name: sold_price
+  :class: Float
+LIST_28:
+  :attr_name: finance
+  :class: String
+LIST_29:
+  :attr_name: area
+  :class: String
+LIST_2:
+  :attr_name: mlsid_prefix
+  :class: String
+LIST_31:
+  :attr_name: house_num
+  :class: String
+LIST_33:
+  :attr_name: street_direction
+  :class: String
+LIST_34:
+  :attr_name: street_name
+  :class: String
+LIST_35:
+  :attr_name: unit_num
+  :class: String
+LIST_37:
+  :attr_name: street_suffix
+  :class: String
+LIST_39:
+  :attr_name: city
+  :class: String
+LIST_3:
+  :attr_name: mlsid
+  :class: Integer
+LIST_40:
+  :attr_name: state
+  :class: String
+LIST_43:
+  :attr_name: zip
+  :class: String
+LIST_46:
+  :attr_name: latitude
+  :class: String
+LIST_47:
+  :attr_name: longitude
+  :class: String
+LIST_48:
+  :attr_name: sqft
+  :class: Float
+LIST_4:
+  :attr_name: approved
+  :class: String
+LIST_53:
+  :attr_name: year_built
+  :class: String
+LIST_54:
+  :attr_name: cancel_reason
+  :class: String
+LIST_56:
+  :attr_name: lot_size
+  :class: String
+LIST_57:
+  :attr_name: acres
+  :class: String
+LIST_5:
+  :attr_name: list_agent_id
+  :class: String
+LIST_62:
+  :attr_name: sell_agent_id
+  :class: String
+LIST_65:
+  :attr_name: rooms_count
+  :class: Integer
+LIST_66:
+  :attr_name: bedrooms_count
+  :class: Integer
+LIST_68:
+  :attr_name: full_baths_count
+  :class: Integer
+LIST_69:
+  :attr_name: half_baths_count
+  :class: Integer
+LIST_72:
+  :attr_name: is_in_subdivision
+  :class: String
+LIST_75:
+  :attr_name: taxes_total
+  :class: String
+LIST_77:
+  :attr_name: subdivision
+  :class: String
+LIST_87:
+  :attr_name: timestamp
+  :class: DateTime
+LIST_88:
+  :attr_name: hoa_participation_required
+  :class: String
+LIST_89:
+  :attr_name: sewer
+  :class: String
+LIST_8:
+  :attr_name: prop_type
+  :class: String
+LIST_90:
+  :attr_name: water
+  :class: String
+LIST_92:
+  :attr_name: new_construction_status
+  :class: String
+LIST_93:
+  :attr_name: sqft_source
+  :class: String
+LIST_94:
+  :attr_name: hoa_dues_period
+  :class: String
+LIST_9:
+  :attr_name: property_type
+  :class: String
+listing_member_name:
+  :attr_name: listing_agent_name
+  :class: String
+listing_office_name:
+  :attr_name: listing_office_name
+  :class: String
+selling_member_name:
+  :attr_name: selling_agent_name
+  :class: String
+selling_office_name:
+  :attr_name: selling_office_name
+  :class: String
+UNBRANDEDIDXVIRTUALTOUR:
+  :attr_name: virtual_tour_unbranded
+  :class: String

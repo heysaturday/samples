@@ -1,0 +1,80 @@
+---
+title: Area template page
+content_type: areas
+---
+{% extends 'living-here' %}
+
+
+
+{% block hero %}
+{% capture "default_hero_photo" %}{% editable_file "default_hero_photo" %}{% endeditable_file %}{% endcapture %}
+{% assign hero_photo = area.hero_photo | default: default_hero_photo %}
+{% assign hero_caption = area.hero_caption | default: area.name %}
+{% include "centered-hero" with hero_photo, hero_caption %}
+{% endblock %}
+
+{% block main %}
+{% include "caption-with-body" with caption: nil, body:area.description %}
+
+<div class="section">
+  <div class="row">
+
+    <div class="small-12 medium-6 large-4 columns stats">
+      <div class="panel">
+        <ul class="no-bullet">
+          <li class="counter">{{ homes | within_zipcodes: area.zip_codes | were_listed | within_last_n_days: 30 | average: "price" | to_dollars: 0 }}</li>
+          <li class="description">Average Home Listing Price</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="small-12 medium-6 large-4 columns stats">
+      <div class="panel">
+        <ul class="no-bullet">
+          <li class="counter">{{ homes | within_zipcodes: area.zip_codes | were_sold | within_last_n_days: 30 | average: "sold_price" | to_dollars: 0 }}</li>
+          <li class="description">Average Home Sale Price</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="small-12 medium-6 large-4 columns stats small-centered end">
+      <div class="panel">
+        <ul class="no-bullet">
+          <li class="counter">{{ homes | within_zipcodes: area.zip_codes | were_sold | within_last_n_days: 30 | average_days_on_market }}</li>
+          <li class="description">Average Days On Market For Homes Sold</li>
+          <li class="disclaimer text-right" style="font-size: 8px;"></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+  <div class="row text-center">
+      <span style="font-size: 10px;">Last updated at {{ now | localized_date: "%l:%M%P on %a, %b %-d %Y"}}. Data includes distressed and non-distressed properties in the last 30 days.</span>
+  </div>
+</div>
+
+{% for content_section in area.content_sections %}
+<div class="section">
+  <div class="row">
+  	<div class="small-10 columns small-centered end">
+  		<h3 class="text-center subsection">
+			{{ content_section.heading }}
+		</h3>
+    </div>
+  </div>
+  <div class="row">
+  	<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+  	  {% for block in content_section.blocks %}
+  	  <li>
+  	  	<div class="text-center">
+  	  		<a href="{{ block.link | decipher_url }}"><img class="th box-shadow-subtle" src="{{ block.photo | resize: '400x300#' }}"></a>
+          <a href="{{ block.link | decipher_url }}"><h4>{{ block.caption }}</h4></a>
+          <div>{{ block.body }}</div>
+  	  	</div>
+  	  </li>
+  	  {% endfor %}
+  	</ul>
+  </div>
+</div>
+{% endfor %}
+{% endblock %}

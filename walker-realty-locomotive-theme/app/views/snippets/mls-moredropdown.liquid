@@ -1,0 +1,64 @@
+<div id="{{ id | default: 'mls-more' }}" data-dropdown-content class="f-dropdown medium" aria-hidden="true" tabindex="-1" style="padding:20px;">
+  <div class="row collapse">
+    <div class="small-3 columns">
+      <label>Living Area (SqFt)</label>
+    </div>
+    <div class="small-9 columns">
+      <select style="width:50%;" name="sqft" placeholder="Living Area" >
+        <option value="">Any</option>
+        <option value="0">0-1000</option>
+        <option value="1000">1000-1500</option>
+        <option value="1500">1500-2000</option>
+        <option value="2000">2000-2500</option>
+        <option value="2500">2500-3000</option>
+        <option value="3000">3000-3500</option>
+        <option value="3500">3500+</option>
+      </select>
+    </div>
+  </div>
+  <div class="row collapse">
+    <div class="small-3 columns">
+      <label>Full Bathrooms</label>
+    </div>
+    <div class="small-9 columns">
+      <select style="width:50%;" name="fullbaths" placeholder="Full Bathrooms" >
+        <option value="">Any</option>
+        <option value="1">1+</option>
+        <option value="2">2+</option>
+        <option value="3">3+</option>
+        <option value="4">4+</option>
+        <option value="5">5+</option>
+      </select>
+    </div>
+  </div>
+  <div class="row collapse">
+    <div class="small-3 columns">
+      <label>Garage</label>
+    </div>
+    <div class="small-9 columns">
+      <select style="width:50%;" name="garages" placeholder="Garage Size" >
+        <option value="">Any</option>
+        <option value="1">1 Car</option>
+        <option value="2">2 Car</option>
+        <option value="3">3 Car</option>
+        <option value="4">4+ Car</option>
+      </select>
+    </div>
+  </div>
+  <div class="row collapse">
+    <div class="small-3 columns">
+      <label>Acreage</label>
+    </div>
+    <div class="small-9 columns">
+      <select style="width:50%;" name="acres"> placeholder="Acreage">
+        <option value="">Any</option>
+        <option value="half">0-&frac12;</option>
+        <option value="whole">&frac12;-1</option>
+        <option value="1">1+</option>
+        <option value="5">5+</option>
+        <option value="10">10+</option>
+        <option value="20">20+</option>
+      </select>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,82 @@
+---
+title: Search
+listed: false
+published: true
+---
+{% extends index %}
+
+{% block hero %}
+{% endblock %} 
+
+{% block main %}
+
+{% assign search_results = homes | active | pending | match_criteria: params %}
+{% assign page_size = params | page_size %}
+{% paginate search_results by 12 %}
+
+<div class="section alt">
+	<div class="row">
+		<div class="large-12 columns">
+			<form id="mls-search" method="GET" action="/search/r">
+		        <div class="small-12 large-5 columns">
+		          {% include mls-areabar %}
+		        </div>
+		        
+		        <div class="small-12 medium-3 large-2 columns">
+		          {% include mls-bedrooms %}                  
+		        </div>
+		        
+		        <div class="small-12 medium-6 large-2 columns text-center">
+                    <a href="#" data-dropdown="mls-price"><span>Price</span></a>
+                </div>
+                {% include mls-pricedropdown %}
+
+		        <div class="small-12 medium-3 large-2 columns text-center">
+                  <a href="#" data-dropdown="mls-more" class="" ><span>More</span></a>
+                  <!-- <a href="#" data-dropdown="mls-more" data-options="align:left" aria-controls="mls-more" aria-expanded="false">More</a> -->
+                </div>
+                {% include mls-moredropdown %}
+
+                <div class="small-12 medium-3 large-1 columns">
+		        	<button class="tiny button radius success">SEARCH&nbsp;<i class="fi-magnifying-glass"></i></button>
+		        </div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="section">
+	<div class="row">
+		<div class="small-10 columns small-centered end text-center">
+			<h3>There are <strong>{{ paginate.total_entries }}</strong> homes matching your criteria. <br />
+			 {% if paginate.total_entries > 500 %}Search results are limited to 100 homes, please refine your search.{% endif %}</h3>
+		</div>
+	</div>
+</div>
+
+<div class="section">
+	<div class="row">
+		<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+		
+		{% for home in paginate.collection %}
+			<li>
+				<ul class="property-multicolumn-brief no-bullet">
+					<li class="photo box-shadow-subtle"><a href="{{ home.slug }}">
+						<img class="landscape box-shadow-subtle" alt="{{ home.primary_photo.file_name | escape }}" src="{{ home.primary_photo.hi_res | default: "http://placehold.it/400x300&text=Photos%20Coming%20Soon" | resize: '400x300#' }}">
+						<span class="kind">{{ home.status }}</span></a>
+					</li>
+					<li class="street-address"><a href="{{ home.slug}}"><strong>{{ home.street_address }}</strong></a></li>
+					<li class="neighborhood">{{ home.neighborhood | pipify: home.area }}</li>
+					<li class="beds-baths">{{ home.bedrooms_count }} Beds | {{ home.baths }} Baths </li>
+					<li class="price">{{ home.price }}</li>						
+				</ul>
+			</li>
+
+		{% endfor %}
+		</ul>
+		{% include 'pagination' %}
+		{% endpaginate %}
+	</div>
+</div>
+
+{% endblock %}

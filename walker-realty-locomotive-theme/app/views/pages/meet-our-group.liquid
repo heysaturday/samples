@@ -1,0 +1,79 @@
+---
+title: Meet Our Group
+listed: true
+published: true
+position: 5
+---
+{% extends parent %}
+
+{% block hero %}
+{% capture "hero_photo" %}{% editable_file "hero_photo" %}{% endeditable_file %}{% endcapture %}
+{% capture "hero_caption" %}
+{% editable_text "hero_caption", format: "raw" %}We treat our clients right.{% endeditable_text %}
+{% endcapture %}
+{% include "centered-hero" with hero_photo, hero_caption %}
+{% endblock %} 
+
+{% block main %}
+
+{% capture "body" %}
+{% editable_text "body" %}
+<p>
+	<h3>We are a boutique real estate brokerage. Besides offering catered services, our real estate experts are customer service oriented. Our agents are excited to share their real estate expertise and knowledge with complete transparency. Our top priority is fulfilling our client's needs.</h3>
+
+	<br />
+
+	<h3> Agents at Walker Realty Group are skilled negotiators and none of them are in business thinking this is a sales job. All our agents are here to truly help you, the client, in any aspect of the buying or selling process. We realize this is one of the biggest chapters in your life and we take that responsibility serious.</h3>
+</p>
+{% endeditable_text %}
+{% endcapture %}
+
+<div class="section alt">
+	<br />
+	<div class="row text-center">
+		<div class="small-10 small-centered columns end">
+		{{ body }}
+		</div>
+	</div>
+</div>
+
+<div class="section">
+  <div class="row">
+  	<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 agent-listings">
+  	  {% for team_member in contents.team_members %}
+  	  <li>
+  	  	<div class="agent-listing" data-reveal-id="{{ team_member._slug }}">
+  	  		<div class="photo show-for-medium-up"><img src="{{ team_member.photo.url | resize: '400x300#' }}" alt="{{ team_member.name }}" /></div>
+	  	  	<div class="agent-info show-for-medium-up">
+	  	  		<span class="name left">{{ team_member.name }}</span>
+	  	  		<span class="title right label radius">{{ team_member.role }}</span>
+	  	  	</div>
+	  	  	<div id="{{ team_member._slug }}" class="agent-bio reveal-modal testimonial medium" data-reveal>
+	  	  		<div class="row">
+		  	  		<div class="small-12">
+		  	  			<h1>{{ team_member.name }}</h1>
+		  	  			<h4>{{ team_member.role }}</h4>
+		  	  			<span>{{ "" | pipify: team_member.phone | pipify: team_member.email | pipify: website | replace_first: '|', '' }}</span>
+		  	  			<hr />
+		  	  			<div>
+		  	  				{{ team_member.bio }}
+		  	  			</div>
+		  	  			<hr />
+		  	  			<span>{{ "" | pipify_url: team_member.twitter, "Twitter" | pipify_url: team_member.facebook, "Facebook" | pipify_url: team_member.google_plus, "Google Plus" | replace_first: '|', '' }}</span>
+		  	  			<a class="close-reveal-modal">&#215;</a>
+		  	  		</div>	
+	  	  		</div>
+	  	  		
+	  	  	</div>
+  	  	</div>
+  	  </li>
+  	  {% endfor %}
+  	</ul>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block javascript_includes %}
+	
+{% endblock %}

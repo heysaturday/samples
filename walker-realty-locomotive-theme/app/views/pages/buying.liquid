@@ -1,0 +1,134 @@
+---
+title: Buying
+listed: true
+published: true
+position: 1
+---
+{% extends parent %}
+{% block hero %}{% endblock %}
+
+{% block main %}
+{% capture "header" %}
+{% editable_text "header", format: "raw" %}
+  YOUR <strong>TRUSTED SOURCE</strong> FOR FIRST-CLASS HOME SALES AND SUPERIOR CUSTOMER SERVICE
+{% endeditable_text %}
+{% endcapture %}
+
+{% capture "body" %}
+{% editable_text "body" %}
+  Looking to sell your home? Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eget dolor quis erat porttitor rhoncus sit amet a lacus. Pellentesque id metus bibendum, rhoncus mi nec, vulputate erat. Nam in consequat libero, vel fringilla enim. Sed cursus venenatis dolor, a convallis mi interdum eget. Proin posuere ante lacus, ac mollis tortor lobortis id. Sed a sapien et erat lobortis facilisis et sed nibh. Etiam ac erat id dolor condimentum fermentum. Quisque lobortis metus metus, sit amet pellentesque tortor venenatis et. Phasellus ornare hendrerit enim vitae adipiscing. Donec lacus dui, laoreet a viverra non, consequat eget diam
+{% endeditable_text %}
+{% endcapture %}
+
+<div class="section alt">
+	<div class="row">
+		<div class="large-12 columns">
+			<form method="GET" id="mls-search" action="/search/r">
+		        <div class="small-12 large-5 columns">
+		            {% include mls-areabar %}
+		        </div>
+		        
+		        <div class="small-12 medium-3 large-2 columns">
+		          {% include mls-bedrooms %}                  
+		        </div>
+		        
+		        <div class="small-12 medium-6 large-2 columns text-center">
+                    <a href="#" data-dropdown="mls-price"><span>Price</span></a>
+                </div>
+                {% include mls-pricedropdown %}
+
+		        <div class="small-12 medium-3 large-2 columns text-center">
+                  <a href="#" data-dropdown="mls-more" class="" ><span>More</span></a>
+                  <!-- <a href="#" data-dropdown="mls-more" data-options="align:left" aria-controls="mls-more" aria-expanded="false">More</a> -->
+                </div>
+                {% include mls-moredropdown %}
+
+                <div class="small-12 medium-3 large-1 columns">
+		        	<button class="tiny button radius success">SEARCH&nbsp;<i class="fi-magnifying-glass"></i></button>
+		        </div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="section">
+	<div class="row">
+		<div class="small-12 medium-6 large-3 columns stats">
+			<div class="panel">
+				<ul class="no-bullet">
+					<li class="counter">{{ homes | active | in_area: "knox county" | count }}</li>
+					<li class="description">Homes Currently On Market</li>
+				</ul>
+			</div>
+		</div>
+		<div class="small-12 medium-6 large-3 columns stats">
+			<div class="panel">
+				<ul class="no-bullet">
+					<li class="counter">{{ homes | in_area: "knox county" | were_sold | within_last_n_days: 7 | count }}</li>
+					<li class="description">Homes Sold In Last 7 Days</li>
+				</ul>
+			</div>
+		</div>
+		<div class="small-12 medium-6 large-3 columns stats">
+			<div class="panel">
+				<ul class="no-bullet">
+					<li class="counter">{{ homes | in_area: "knox county" | were_listed | within_last_n_days: 7 | count }}</li>
+					<li class="description">Homes Listed In Last 7 Days</li>
+				</ul>
+			</div>
+		</div>				
+		<div class="small-12 medium-6 large-3 columns stats">
+			<div class="panel">
+				<ul class="no-bullet">
+					<li class="counter">{{ homes | sold | in_area: "knox county" | were_sold | within_last_n_days: 30 | average_days_on_market }}</li>
+					<li class="description">Average Days On Market</li>
+        		</ul>
+      		</div>
+    	</div>
+	</div>
+  		<div class="row text-center">
+      		<span style="font-size: 10px;">Based on MLS data from the following areas: [Knox County] and includes distressed and non-distressed properties. Last updated at {{ now | localized_date: "%l:%M%P on %a, %b %-d %Y"}}.</span>
+  		</div>
+	</div>
+</div>
+
+<div class="section alt">
+	<div class="row">
+		<div class="small-10 columns small-centered end">
+			<h3 class="text-center subsection">{{ header }}</h3>
+			<p class="radius text-center text-large">{{ body }}</p>
+		</div>
+	</div>
+</div>
+
+<div class="section">
+	<div class="small-12">
+		<div class="row text-center">
+			<h2>JUST LISTED</h2>
+			<br />
+			<br />
+		</div>
+		<div class="row">
+			<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3">
+			{% assign new_homes = homes | active | in_area: "Knox County" | greater_than: "price", 200000 | less_than: "price", 400000 | sort_descending: "listing_date" | greater_than: "pics_count", 0 | limit: 6 %}
+			{% for home in new_homes %}
+				<li>
+					<ul class="property-multicolumn-brief no-bullet">
+						<li class="photo box-shadow-subtle"><a href="{{ home.slug }}">
+                            {% assign primary_photo = home.primary_photo %}
+							<img class="landscape box-shadow-subtle" alt="{{ primary_photo.file_name | escape }}" src="{{ primary_photo.hi_res | default: "http://placehold.it/400x300&text=Photos%20Coming%20Soon" | resize: '400x300#' }}">
+							<span class="kind">New Listing</span></a>
+    					</li>
+                        <li class="street-address"><a href="{{ home.slug }}"><strong>{{ home.street_address }}</strong></a>&nbsp;<small>{{ home.listing_date | distance_of_time_in_words: now }} ago</small></li>
+                        <li class="neighborhood">{{ home.neighborhood | pipify: home.area }}</li>
+                        <li class="beds-baths">{{ home.bedrooms_count }} Beds | {{ home.baths }} Baths | {{ home.sqft }} ft<sup>2</sup></li>
+                        <li class="price">{{ home.price }}</li>  		
+					</ul>
+				</li>
+
+			{% endfor %}
+			</ul>
+		</div>
+	</div>
+</div>
+{% endblock %}

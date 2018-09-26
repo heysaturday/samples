@@ -1,0 +1,87 @@
+---
+title: What They Say
+listed: true
+published: true
+position: 4
+---
+{% extends parent %}
+
+{% block hero %}
+{% capture "hero_photo" %}{% editable_file "hero_photo" %}{% endeditable_file %}{% endcapture %}
+{% capture "hero_caption" %}
+{% editable_text "hero_caption", format: "raw" %}What Our Clients Say About Us{% endeditable_text %}
+{% endcapture %}
+{% include "centered-hero" with hero_photo, hero_caption %}
+{% endblock %} 
+
+{% block main %}
+<div class="section"></div>
+<div class="section">
+	<div class="row text-center">
+		<div class="small-12 medium-6 large-4 columns">
+		{% with_scope column: '1' %}
+		{% for testimonial in contents.testimonials %}
+			{% if testimonial.style == "blue background" %}
+				{% assign class = "one-liner" %}
+			{% endif %}
+			{% if testimonial.style == "white background" %}
+				{% assign class = "all-caps" %}
+			{% endif %}
+			{% if testimonial.style == "grey background" %}
+				{% assign class = "verbose" %}
+			{% endif %}
+			<div class="testimonial-tile {{ class }} radius" 	data-reveal-id="{{ testimonial._slug }}">{{ testimonial.short }}</div>					
+		{% endfor %}
+		{% endwith_scope %}
+		</div>
+		<div class="small-12 medium-6 large-4 columns">
+		{% with_scope column: '2' %}
+		{% for testimonial in contents.testimonials %}
+			{% if testimonial.style == "blue background" %}
+				{% assign class = "one-liner" %}
+			{% endif %}
+			{% if testimonial.style == "white background" %}
+				{% assign class = "all-caps" %}
+			{% endif %}
+			{% if testimonial.style == "grey background" %}
+				{% assign class = "verbose" %}
+			{% endif %}
+			<div class="testimonial-tile {{ class }} radius" 	data-reveal-id="{{ testimonial._slug }}">{{ testimonial.short }}</div>					
+		{% endfor %}
+		{% endwith_scope %}
+		</div>
+		<div class="small-12 medium-6 large-4 columns end">
+		{% with_scope column: '3' %}
+		{% for testimonial in contents.testimonials %}
+			{% if testimonial.style == "blue background" %}
+				{% assign class = "one-liner" %}
+			{% endif %}
+			{% if testimonial.style == "white background" %}
+				{% assign class = "all-caps" %}
+			{% endif %}
+			{% if testimonial.style == "grey background" %}
+				{% assign class = "verbose" %}
+			{% endif %}
+			<div class="testimonial-tile {{ class }} radius" 	data-reveal-id="{{ testimonial._slug }}">{{ testimonial.short }}</div>					
+		{% endfor %}
+		{% endwith_scope %}
+		</div>
+	</div>
+
+
+	<div class="row show-for-small-only">
+		{% for testimonial in contents.testimonials %}
+		<div id="{{ testimonial._slug }}" class="reveal-modal testimonial small" data-reveal>
+			<blockquote>{{ testimonial.body }}
+				<cite>{{ testimonial.author }}</cite>
+			</blockquote>
+			<a class="close-reveal-modal">&#215;</a>
+		</div>	
+		{% endfor %}
+	</div>
+</div>
+{% endblock %}
+
+{% block javascript_includes %}
+	
+{% endblock %}

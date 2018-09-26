@@ -1,0 +1,43 @@
+# Public name of this content type
+name: Custom Listing Photos
+
+# TODO: explain
+slug: listingphotos
+
+# Explanation for the backoffice
+description: Listing Photos are linked to a single Custom Listing on the site
+
+# Default field (e.g title)
+label_field_name: description
+
+# Order of entries
+order_by: description # default: manually, also available: created_at or any field slug
+group_by: custom_listing 
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- description: # Name of the field
+    label: Description
+    type: string
+    required: true
+    hint: "Office, Master Bathroom #1, Enjoy your beautiful new kitchen, etc."
+    localized: false
+
+- photo: # Name of the field
+    label: Photo To Display
+    type: file
+    required: true
+    hint: This is the photo which is displayed
+    localized: false
+
+- sort_order:
+    label: Photo Sort Order
+    type: integer
+    required: true
+    hint: "1 is the first feature shown, 2 is the second, and so on. You may set every one to the same number if you don't what order they appear on the web page"
+
+- listing:
+    label: Associated Custom Listing
+    type: belongs_to
+    class_name: customlistings
+    required: false

@@ -1,0 +1,52 @@
+# Public name of this content type
+name: Testimonials
+slug: testimonials
+description: Testimonials from satisfied clients
+label_field_name: short
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- short: # Name of the field
+    label: Short
+    type: string
+    required: true
+    hint: Short description to catch a users eye
+    localized: false
+
+- body: # Name of the field
+    label: Body
+    type: text
+    required: false
+    hint: Full body of the testimonial
+    localized: false
+    # Enable or not the RTE [html|text]
+    text_formatting: html
+
+- author: # Name of the field
+    label: Author
+    type: string
+    required: false
+    hint: The person or persons who sent it
+    localized: false
+    # Enable or not the RTE [html|text]
+    # text_formatting: html
+
+- column: # Name of the field
+    label: Column
+    type: select
+    required: false
+    hint: On large screens, these are displayed in a 3 column layout. Try to evenly distribute them
+    localized: false    # if localized, use
+    #   en: ['option1_en', 'option2_en']
+    #   fr: ['option1_fr', 'option2_fr']
+    select_options: ['1', '2', '3']
+
+- style: # Name of the field
+    label: Style
+    type: select
+    required: false
+    hint: Choose the look of the testimonial tile
+    localized: false    # if localized, use
+    #   en: ['option1_en', 'option2_en']
+    #   fr: ['option1_fr', 'option2_fr']
+    select_options: ['blue background', 'white background', 'grey background']

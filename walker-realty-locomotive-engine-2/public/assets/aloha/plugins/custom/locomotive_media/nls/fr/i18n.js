@@ -1,0 +1,1 @@
+define({"button.addimg.tooltip":"ins\xe9rer m\xe9dia"});

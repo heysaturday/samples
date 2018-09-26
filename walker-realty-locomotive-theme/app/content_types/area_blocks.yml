@@ -1,0 +1,53 @@
+# Public name of this content type
+name: Area blocks
+
+# TODO: explain
+slug: area_blocks
+
+# Explanation for the backoffice
+description: "A block of information with a photo, caption, and body for html"
+
+# Default field (e.g title)
+label_field_name: caption
+
+# Order of entries
+order_by: manually # default: manually, also available: created_at or any field slug
+group_by: content_section
+
+# Describe each field. The name shoud always be an underscored string
+fields: 
+- caption: # Name of the field
+    label: Caption
+    type: string
+    required: true
+    hint: A description of the field for the editors
+    localized: false
+
+- photo: # Name of the field
+    label: Photo
+    type: file
+    required: false
+    hint: A description of the field for the editors
+    localized: false
+
+- body: # Name of the field
+    label: Body
+    type: text
+    required: false
+    hint: A description of the field for the editors
+    localized: false
+    # Enable or not the RTE [html|text]
+    text_formatting: html
+
+- content_section:
+    label: Content Section
+    type: belongs_to
+    class_name: area_sections
+    required: true
+
+- link:
+    label: Link To More information
+    type: string
+    required: false
+    hint: "Either a page on this site, like /posts/an-example or a full url, such as http://www.linkedin.com"
+    localized: false

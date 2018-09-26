@@ -1,0 +1,39 @@
+---
+title: Living Here
+listed: true
+published: true
+position: 3
+---
+{% extends parent %}
+
+{% block hero %}
+{% capture "hero_photo" %}{% editable_file "hero_photo" %}{% endeditable_file %}{% endcapture %}
+{% capture "hero_caption" %}
+{% editable_text "hero_caption", format: "raw" %}Neighborhoods{% endeditable_text %}
+{% endcapture %}
+{% include "centered-hero" with hero_photo, hero_caption %}
+{% endblock %} 
+
+{% block main %}
+
+<div class="section">
+  <div class="row">
+  	<ul class="small-block-grid-1 medium-block-grid-2 large-block-grid-3 agent-listings">
+  	  {% for area in contents.areas %}
+  	  <li>
+  	  	<div>
+  	  		<a href="/areas/{{ area._slug }}">
+	  	  		<img src="{{ area.main_photo | resize: '400x300#' }}">
+				<h4 class="text-center">{{ area.name }}</h4>
+			</a>
+  	  	</div>
+  	  </li>
+  	  {% endfor %}
+  	</ul>
+  </div>
+</div>
+{% endblock %}
+
+{% block javascript_includes %}
+  
+{% endblock %}
