@@ -1,0 +1,7 @@
+== South End Randomizer
+
+A custom web application that allows Charlotte residents and vistors to South End the opportunity to have a beer tour randomly selected in the South End area. 
+This application uses js to spin the wheel, make and save random selections (avoid duplicates), and then save these selections in the cookies so that the user can then "Map" the chosen selection.
+This pushes the selected locations to a google map. 
+
+The live app can be viewed at [randomizer.historicsouthend.com](http://randomizer.historicsouthend.com)
